@@ -3,6 +3,8 @@ import React,{useEffect,useState} from 'react'
 const Gridscrolling = () => {
   const[data,setData] = useState([])
 
+
+  //fecth data
   const fecthData = async()=>{
     const res = await fetch("https://randomuser.me/api?page=1&results=16")
     const result = await res.json();
@@ -12,7 +14,7 @@ const Gridscrolling = () => {
     }
   }
 
-
+//handleScroll
   const handleScroll = (e)=>{
     const scrollTop = document.documentElement.scrollTop
     const scrollHeight = document.documentElement.scrollHeight
@@ -24,6 +26,8 @@ const Gridscrolling = () => {
     }
   }
 
+
+ // useEffect to handle the api 
   useEffect(()=>{
     fecthData()
     window.addEventListener('scroll', handleScroll);
@@ -31,7 +35,7 @@ const Gridscrolling = () => {
   },[])
 
   
-
+//design
   const coloumns = ["image","name","email"]
   return (
     <div>
@@ -49,7 +53,7 @@ const Gridscrolling = () => {
             }
           </tr>
         </thead>
-        <tbody onScroll={()=>handleScroll()} className="grid grid-cols-4 gap-4">
+        <tbody className="grid grid-cols-4 gap-4">
           <tr className="grid-grid-cols-4 gap-4">
             <td className="p-4 text-gray-700">
               {
